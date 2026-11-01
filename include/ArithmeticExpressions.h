@@ -7,32 +7,20 @@
 #include <vector>
 #include <string>
 #include <map>
-#include "Stack.h"
+//#include "Stack.h"
+#include "StackOnTheList.h"
 
 using namespace std;
-
-enum LexemType
-{
-	OPERAND = 0,
-	OPERATOR = 1,
-	LPAREN = 2,
-	RPAREN = 3
-};
-
-struct Lexem
-{
-	string name;
-	int type;
-};
 
 
 class ArithmeticExpression
 {
 private:
 	string infix;				// исходная выражение в виде строки
-	vector<Lexem> lexems;		// массив лексем
-	vector<Lexem> postfix;		// обратная польская запись
-	map<string, int> priority;	// приоритеты операций
+	string postfix;				// обратная польская запись
+	vector<char> lexem;			// массив лексем
+	map<char, int> priority;	// приоритеты операций
+	map<char, double> operands;	// значения переменных
 
 
 	void Parse();				// разбиение строки на лексемы
@@ -40,11 +28,13 @@ private:
 
 
 public:
-	ArithmeticExpression(string expr);
-	~ArithmeticExpression();
+	ArithmeticExpression(string str_infix);
+	~ArithmeticExpression() {}
 
-	void Evaluate();
-	void PrintPostfix() const;
+	vector<char> GetOperands() const;
+	string GetInfix() const;
+	string GetPostfix();
+	double Calculate(const map<char, double>& values);
 };
 
 

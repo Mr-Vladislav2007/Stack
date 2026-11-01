@@ -1,6 +1,6 @@
-^C:\USERS\S25380151\DESKTOP\LABA3.2\STACK\BLD\CMAKEFILES\6D0E4F74F05B1572006A4F5A3B406C4E\GENERATE.STAMP.RULE
+^C:\USERS\USER\DESKTOP\LABA\STACK\BLD\CMAKEFILES\5D3917442C978942116E85AFBC989759\GENERATE.STAMP.RULE
 setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/s25380151/Desktop/Laba3.2/Stack -BC:/Users/s25380151/Desktop/Laba3.2/Stack/bld --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Users/s25380151/Desktop/Laba3.2/Stack/bld/Stack.slnx
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/user/Desktop/Laba/Stack -BC:/Users/user/Desktop/Laba/Stack/bld --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Users/user/Desktop/Laba/Stack/bld/Stack.slnx
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone

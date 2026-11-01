@@ -1,0 +1,14 @@
+{
+    "version": 1,
+    "revision": 0,
+    "rules": [
+        {
+            "primary-output": "StackApp.dir\\Debug\\StackOnTheList.obj",
+            "outputs": [
+                "StackApp.dir\\Debug\\StackOnTheList.h.obj.dt.module.json",
+                "StackApp.dir\\Debug\\StackOnTheList.h.obj.dt.d.json"
+            ],
+            "requires": []
+        }
+    ]
+}

@@ -1,0 +1,14 @@
+{
+    "version": 1,
+    "revision": 0,
+    "rules": [
+        {
+            "primary-output": "StackApp.dir\\Debug\\List.obj",
+            "outputs": [
+                "StackApp.dir\\Debug\\List.h.obj.dt.module.json",
+                "StackApp.dir\\Debug\\List.h.obj.dt.d.json"
+            ],
+            "requires": []
+        }
+    ]
+}

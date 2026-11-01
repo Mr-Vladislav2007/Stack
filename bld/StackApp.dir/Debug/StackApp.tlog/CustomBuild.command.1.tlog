@@ -1,6 +1,6 @@
-^C:\USERS\S25380151\DESKTOP\LABA3.2\STACK\CMAKELISTS.TXT
+^C:\USERS\USER\DESKTOP\LABA\STACK\CMAKELISTS.TXT
 setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/s25380151/Desktop/Laba3.2/Stack -BC:/Users/s25380151/Desktop/Laba3.2/Stack/bld --check-stamp-file C:/Users/s25380151/Desktop/Laba3.2/Stack/bld/CMakeFiles/generate.stamp
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/user/Desktop/Laba/Stack -BC:/Users/user/Desktop/Laba/Stack/bld --check-stamp-file C:/Users/user/Desktop/Laba/Stack/bld/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
