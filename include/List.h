@@ -36,9 +36,14 @@ public:
 	~List();								// деструктор
 
 
-	void Clear();							// очистка списка
-	void Push(const T& val);				// добавить в конец
-	void Pop();								// удалить последний элемент
+	void Clear();								// очистка списка
+	void PushBack(const T& val);				// добавить в конец
+	void PopBack();								// удалить последний элемент
+	void InsertAt(size_t index, const T& val);	// вставить в позицию index
+	void RemoveAt(size_t index);				// удалить элемент с позиции index
+
+	T& operator[](size_t index);
+	const T& operator[](size_t index) const;
 
 	T Back() const;							// вернуть последний элемент
 	T Front() const;						// вернуть первый элемент
@@ -48,11 +53,11 @@ public:
 	size_t Size() const;					// размер списка
 
 
-	friend ostream& operator<<(ostream& os, const List<T>& list) 
+	friend ostream& operator<<(ostream& os, const List<T>& list)
 	{
 		Node<T>* current = list.start;
 		os << "[";
-		while (current != nullptr) 
+		while (current != nullptr)
 		{
 			os << current->value;
 			if (current->next != nullptr) os << ", ";
@@ -77,14 +82,14 @@ List<T>::List(const List& other) : start(nullptr), finish(nullptr), size(0)
 	Node<T>* current = other.start;
 	while (current != nullptr)
 	{
-		Push(current->value);
+		PushBack(current->value);
 		current = current->next;
 	}
 }
 
 
 template<class T>
-List<T>&  List<T>::operator=(const List& other)
+List<T>& List<T>::operator=(const List& other)
 {
 	if (this == &other)
 		return *this;
@@ -94,7 +99,7 @@ List<T>&  List<T>::operator=(const List& other)
 	Node<T>* current = other.start;
 	while (current != nullptr)
 	{
-		Push(current->value);
+		PushBack(current->value);
 		current = current->next;
 	}
 
@@ -127,7 +132,7 @@ void List<T>::Clear()
 
 
 template<class T>
-void List<T>::Push(const T& val)
+void List<T>::PushBack(const T& val)
 {
 	Node<T>* tmp = new Node<T>(val);
 
@@ -144,7 +149,7 @@ void List<T>::Push(const T& val)
 
 
 template<class T>
-void List<T>::Pop()
+void List<T>::PopBack()
 {
 	if (finish == nullptr)
 		return;
@@ -159,6 +164,104 @@ void List<T>::Pop()
 
 	delete tmp;
 	size--;
+}
+
+
+template<class T>
+void List<T>::InsertAt(size_t index, const T& val)
+{
+	Node<T>* new_node = new Node<T>(val);
+
+	if (index == 0)
+	{
+		new_node->next = start;
+		if (start != nullptr)
+			start->prev = new_node;
+		start = new_node;
+		if (finish == nullptr)
+			finish = new_node;
+	}
+
+	else if (index == size)
+	{
+		new_node->prev = finish;
+		finish->next = new_node;
+		finish = new_node;
+	}
+
+	else
+	{
+		Node<T>* current = start;
+		for (size_t i = 0; i < index - 1; i++)
+		{
+			current = current->next;
+		}
+
+		new_node->next = current->next;
+		new_node->prev = current;
+		current->next->prev = new_node;
+		current->next = new_node;
+	}
+
+	size++;
+}
+
+
+template<class T>
+void List<T>::RemoveAt(size_t index)
+{
+	Node<T>* curremt;
+	if (index == 0)
+	{
+		current = start;
+		start = start->next;
+		if (start != nullptr)
+			start->prev = nullptr;
+		else
+			finish = nullptr;
+	}
+
+	else if (index == size - 1)
+	{
+		current = finish;
+		finish = finish->prev;
+		finish->next = nullptr;
+	}
+
+	else
+	{
+		current = start;
+		for (size_t i = 0; i < index; i++)
+			current = current->next;
+
+		curren->prev->next = current->next;
+		curren->next->prev = current->prev;
+	}
+
+	delete current;
+	size--;
+}
+
+
+template<class T>
+T& List<T>::operator[](size_t index)
+{
+	Node<T>* current = start;
+	for (size_t i = 0; i < index; i++)
+		current = current->next;
+
+	return current->value;
+}
+
+
+template<class T>
+const T& List<T>::operator[](size_t index) const
+{
+	Node<T>* current = start;
+	for (size_t i = 0; i < index; i++)
+		current = current->next;
+
+	return current->value;
 }
 
 
